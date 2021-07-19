@@ -31,6 +31,15 @@ export const getStaticProps = async ({params}) =>{
     // always returns an array
   })
 
+  if(!items.length){
+    return {
+      redirect:{
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
   return {
     // Next js presumes array, doens't know there will only be 1, so [0] returns the only item in array
     props: {recipe: res.items[0]},
